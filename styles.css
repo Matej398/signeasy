@@ -1,59 +1,163 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    background: #f9f9f9; /* Light background */
+    color: #000; /* Black text */
 }
+
 header {
-    background: #2c3e50;
-    color: white;
-    padding: 10px 20px;
+    background: #fff; /* White header */
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #000;
+}
+
 nav a {
-    color: white;
-    margin-left: 20px;
+    color: #000;
+    margin-left: 30px;
     text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s;
 }
+
+nav a:hover {
+    color: #ff69b4; /* Hot pink hover */
+}
+
 .hero {
     text-align: center;
-    padding: 40px;
-}
-.signature-tool {
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 10px;
     margin: 20px auto;
-    max-width: 400px;
+    max-width: 600px;
 }
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+.signature-tool {
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+}
+
 canvas {
     border: 1px solid #ccc;
+    border-radius: 4px;
     margin: 10px 0;
+    background: #fff;
 }
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
 button {
-    padding: 10px 20px;
-    background: #3498db;
-    color: white;
+    padding: 12px 24px;
+    background: #ff69b4; /* Hot pink */
+    color: #000; /* Black label */
     border: none;
+    border-radius: 25px; /* Rounded */
     cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s;
 }
+
 button:hover {
-    background: #2980b9;
+    background: #ff1493; /* Darker pink hover */
 }
+
 .pricing {
     text-align: center;
-    padding: 40px;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 20px auto;
 }
+
+.pricing h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
 .plans {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
+
 .plan {
-    border: 1px solid #ddd;
-    padding: 20px;
-    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 250px;
 }
+
+.plan.highlighted {
+    border: 2px solid #ff69b4; /* Pink border for Pro */
+}
+
+.plan h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.plan .price {
+    font-size: 28px;
+    color: #000;
+    margin: 10px 0;
+}
+
+.plan .price span {
+    font-size: 14px;
+    color: #666;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.plan ul li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
 footer {
     text-align: center;
-    padding: 10px;
-    background: #ecf0f1;
+    padding: 20px;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .plans {
+        flex-direction: column;
+        align-items: center;
+    }
+    .plan {
+        width: 80%;
+    }
 }
