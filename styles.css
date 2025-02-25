@@ -1,28 +1,37 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f9f9f9; /* Light background */
-    color: #000; /* Black text */
+    background: #000; /* Black page */
+    color: #fff; /* White text */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
-    background: #fff; /* White header */
+    background: #000; /* Black header */
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
     margin: 0;
     font-size: 24px;
-    color: #000;
+    color: #fff;
 }
 
 nav a {
-    color: #000;
+    color: #fff;
     margin-left: 30px;
     text-decoration: none;
     font-weight: 700;
@@ -33,17 +42,22 @@ nav a:hover {
     color: #ff69b4; /* Hot pink hover */
 }
 
+main {
+    flex: 1;
+}
+
 .hero {
     text-align: center;
     padding: 60px 20px;
-    background: #fff;
+    background: #000; /* Black to blend with page */
     border-radius: 10px;
     margin: 20px auto;
     max-width: 600px;
 }
 
 .hero h2 {
-    font-size: 32px;
+    font-size: 52px; /* Larger title */
+    font-weight: 400; /* Regular weight */
     margin-bottom: 10px;
 }
 
@@ -54,15 +68,42 @@ nav a:hover {
 .signature-tool {
     margin: 30px auto;
     padding: 20px;
-    background: #fff;
+    background: #000; /* Black box */
     border-radius: 8px;
 }
 
 canvas {
-    border: 1px solid #ccc;
+    border: 1px solid #333; /* Dark gray border */
     border-radius: 4px;
     margin: 10px 0;
-    background: #fff;
+    background: #000; /* Black canvas */
+}
+
+.file-upload-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #808080; /* Gray */
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background 0.3s;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.file-upload-btn::before {
+    content: '↑';
+    margin-right: 8px;
+}
+
+.file-upload-btn:hover {
+    background: #666;
+}
+
+.file-upload-btn input[type="file"] {
+    display: none;
 }
 
 .button-group {
@@ -72,18 +113,25 @@ canvas {
 }
 
 button {
-    padding: 12px 24px;
-    background: #ff69b4; /* Hot pink */
-    color: #000; /* Black label */
+    padding: 16px 28px;
+    background: #ff69b4;
+    color: #000;
     border: none;
-    border-radius: 25px; /* Rounded */
+    border-radius: 15px;
     cursor: pointer;
+    font-size: 20px;
     font-weight: 700;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: #ff1493; /* Darker pink hover */
+    background: #ff1493;
+}
+
+#status {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #fff; /* White on black box */
 }
 
 .pricing {
@@ -109,10 +157,11 @@ button:hover {
     border-radius: 10px;
     padding: 30px;
     width: 250px;
+    color: #000; /* Black text in plans */
 }
 
 .plan.highlighted {
-    border: 2px solid #ff69b4; /* Pink border for Pro */
+    border: 2px solid #ff69b4;
 }
 
 .plan h3 {
@@ -144,11 +193,12 @@ button:hover {
 }
 
 footer {
+    background: #000;
+    color: #fff;
     text-align: center;
     padding: 20px;
-    background: #fff;
-    color: #000;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    width: 100%;
 }
 
 /* Responsive */
