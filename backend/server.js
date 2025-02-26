@@ -3,15 +3,21 @@ const multer = require('multer');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs').promises;
 const path = require('path');
-const os = require('os'); // For temp directory
+const os = require('os');
 
 const app = express();
-// Use system's temp directory for uploads and signed files
 const uploadDir = path.join(os.tmpdir(), 'uploads');
 const signedDir = path.join(os.tmpdir(), 'signed');
 const upload = multer({ dest: uploadDir });
 
-// Ensure directories exist
+// Add CORS headers
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://codelabhaven.com'); // Allow Hostinger origin
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
 async function ensureDirs() {
     await fs.mkdir(uploadDir, { recursive: true }).catch(err => console.log('Upload dir exists:', err));
     await fs.mkdir(signedDir, { recursive: true }).catch(err => console.log('Signed dir exists:', err));
