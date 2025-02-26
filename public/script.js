@@ -1,11 +1,10 @@
-let signaturesLeft = 3; // Start at 3
+let signaturesLeft = 3;
 
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('signaturePad');
     const ctx = canvas.getContext('2d');
     let drawing = false;
 
-    // Set initial counter display
     document.getElementById('status').innerHTML = `Signatures left this month: <span class="signature-count">${signaturesLeft}</span>`;
 
     canvas.addEventListener('mousedown', (e) => {
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!drawing) return;
         ctx.lineWidth = 4;
         ctx.lineCap = 'round';
-        ctx.strokeStyle = '#000000'; // Black on-site
+        ctx.strokeStyle = '#000000';
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
         ctx.beginPath();
@@ -36,8 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please upload a PDF first!');
             return;
         }
-
-        // Check if signatures are left
         if (signaturesLeft <= 0) {
             alert('Sorry, you’ve used all your free signatures this month! Upgrade to Pro for unlimited signing.');
             return;
@@ -51,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('signature', sigBlob, 'signature.png');
 
         try {
-            const response = await fetch('/upload-and-sign', {
+            const response = await fetch('https://signeasy-backend.onrender.com/upload-and-sign', {  // Replace with YOUR Render URL
                 method: 'POST',
                 body: formData,
             });
@@ -65,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
             a.click();
             window.URL.revokeObjectURL(url);
 
-            // Decrease counter and update display
             if (signaturesLeft > 0) {
                 signaturesLeft--;
                 document.getElementById('status').innerHTML = `Signatures left this month: <span class="signature-count">${signaturesLeft}</span>`;
