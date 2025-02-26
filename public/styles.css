@@ -1,0 +1,345 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+nav a {
+    color: #000000;
+    margin-left: 40px;
+    text-decoration: none;
+    font-size: 19px; /* 14pt */
+    font-weight: 600; /* Semibold */
+}
+
+nav a:hover,
+nav a.active {
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 64px; /* 48pt - Home */
+    font-weight: 600; /* Semibold */
+    margin-bottom: 5px;
+}
+
+.pricing h1 {
+    font-size: 48px; /* 36pt - Pricing */
+    font-weight: 600; /* Semibold */
+    margin-top: -100px; /* Moved up */
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 21px; /* 16pt */
+    font-weight: 500; /* Medium */
+    color: #848484;
+    margin-bottom: 40px;
+}
+
+.signature-tool {
+    margin: 40px auto;
+    width: 400px;
+}
+
+canvas {
+    border-radius: 15px;
+    margin: 20px 0;
+    background: #f3f3f3;
+    width: 400px;
+    height: 200px;
+}
+
+.file-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    width: 160px;
+    height: 50px;
+    padding: 0 24px;
+    background: #ffffff;
+    color: #000000;
+    border: 1.5px solid #000000;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 17px; /* 13pt */
+    font-weight: 600; /* Semibold */
+    margin-bottom: 2px;
+    justify-content: center;
+}
+
+.file-upload-btn:hover {
+    background: #f0f0f0;
+}
+
+.file-upload-btn input[type="file"] {
+    display: none;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 24px;
+    background: #baf05d;
+    color: #000000;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px; /* 13pt */
+    font-weight: 600; /* Semibold */
+    justify-content: center;
+    white-space: nowrap; /* Keeps title in one row */
+}
+
+button:hover {
+    background: #a8d94c;
+}
+
+#clearBtn {
+    width: 100px;
+    height: 50px;
+    background: #ffffff;
+    color: #000000;
+    border: 1.5px solid #000000;
+}
+
+#clearBtn:hover {
+    background: #f0f0f0;
+}
+
+#signBtn {
+    width: 260px;
+    height: 50px;
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+#status {
+    font-size: 16px; /* 12pt */
+    margin-top: 20px;
+    font-weight: 400; /* Regular */
+    color: #848484;
+}
+
+#status .signature-count {
+    color: #000000 !important; /* Ensure black */
+    font-weight: 700 !important; /* Ensure bold */
+}
+
+.pricing {
+    padding: 80px 20px;
+}
+
+.plans {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 40px;
+    width: 200px;
+    border: 1.5px solid #000000;
+    text-align: center; /* Center all content */
+}
+
+.plan h2 {
+    font-size: 24px;
+    font-weight: 700; /* Bold */
+    margin-bottom: 20px;
+    align-self: center; /* Center horizontally */
+}
+
+.plan .price {
+    font-size: 48px; /* 36pt */
+    font-weight: 600; /* Semibold - Changed from 700 */
+    margin: 20px 0 10px 0;
+    align-self: center; /* Center horizontally */
+}
+
+.plan .price span {
+    font-size: 20px; /* 15pt */
+    color: #9c9c9c; /* Gray */
+    font-weight: 400; /* Regular */
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+    align-self: center; /* Center horizontally */
+}
+
+.plan ul li {
+    font-size: 16px;
+    color: #000000; /* Black text */
+    margin-bottom: 10px;
+}
+
+.sign-up {
+    width: 160px;
+    height: 50px;
+    margin-top: auto; /* Anchors to bottom */
+    align-self: center; /* Center horizontally */
+}
+
+.get-started {
+    width: 200px;
+    height: 50px;
+    margin-top: auto; /* Anchors to bottom */
+    align-self: center; /* Center horizontally */
+}
+
+footer {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.heart {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
+
+footer a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 400;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 0.25em;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #000000;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23000000' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: 20%;
+    border-bottom: 0;
+    padding-bottom: 0.3em;
+}
+
+footer p {
+    font-size: 13px; /* 10pt */
+    margin: 0;
+    font-weight: 400; /* Regular */
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px 40px;
+    }
+
+    nav a {
+        margin-left: 20px;
+    }
+
+    main {
+        padding: 40px 10px;
+    }
+
+    .hero h1 {
+        font-size: 48px; /* Keep Home title larger */
+    }
+
+    .pricing h1 {
+        font-size: 36px; /* Pricing title smaller */
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .file-upload-btn {
+        width: 140px;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    #clearBtn {
+        width: 90px;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    #signBtn {
+        width: 240px;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .signature-tool {
+        width: 300px;
+    }
+
+    canvas {
+        width: 300px;
+        height: 180px;
+    }
+
+    .plans {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .plan {
+        width: 80%;
+    }
+}
