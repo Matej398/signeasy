@@ -3,14 +3,23 @@ const multer = require('multer');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs').promises;
 const path = require('path');
+const os = require('os'); // For temp directory
 
 const app = express();
-const upload = multer({ dest: '../uploads/' }); // Saves files in uploads folder
+// Use system's temp directory for uploads and signed files
+const uploadDir = path.join(os.tmpdir(), 'uploads');
+const signedDir = path.join(os.tmpdir(), 'signed');
+const upload = multer({ dest: uploadDir });
 
-// Serve static files from public folder
+// Ensure directories exist
+async function ensureDirs() {
+    await fs.mkdir(uploadDir, { recursive: true }).catch(err => console.log('Upload dir exists:', err));
+    await fs.mkdir(signedDir, { recursive: true }).catch(err => console.log('Signed dir exists:', err));
+}
+ensureDirs();
+
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Handle specific routes for HTML files
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
@@ -19,7 +28,6 @@ app.get('/pricing.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'pricing.html'));
 });
 
-// Serve header.html and footer.html explicitly if needed (optional fallback)
 app.get('/header.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'header.html'));
 });
@@ -46,7 +54,7 @@ app.post('/upload-and-sign', upload.fields([{ name: 'pdf' }, { name: 'signature'
         const pages = pdfDoc.getPages();
         const firstPage = pages[0];
         firstPage.drawImage(sigImage, {
-            x: 400, // Right side
+            x: 400,
             y: 50,
             width: 100,
             height: 50
@@ -54,7 +62,7 @@ app.post('/upload-and-sign', upload.fields([{ name: 'pdf' }, { name: 'signature'
         console.log('Signature drawn');
 
         const signedPdfBytes = await pdfDoc.save();
-        const signedPath = path.join(__dirname, '../signed', `signed-${Date.now()}.pdf`);
+        const signedPath = path.join(signedDir, `signed-${Date.now()}.pdf`);
         await fs.writeFile(signedPath, signedPdfBytes);
         console.log('Signed PDF saved:', signedPath);
 
@@ -70,4 +78,5 @@ app.post('/upload-and-sign', upload.fields([{ name: 'pdf' }, { name: 'signature'
     }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
