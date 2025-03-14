@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Commands Cheatsheet | CodeLabHaven</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #00ff9d;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background-color: #2a2a2a;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background-color: #00ff9d;
+            color: #1a1a1a;
+        }
+
+        .tab-content {
+            background-color: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .command {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .command pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #00ff9d;
+            font-weight: 500;
+        }
+
+        .command .explanation {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #00ff9d;
+            color: #1a1a1a;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terminal Cheatsheet</h1>
+        <div class="tabs">
+            <button class="tab active" data-tab="general">General</button>
+            <button class="tab" data-tab="github">GitHub</button>
+            <button class="tab" data-tab="windows">Windows</button>
+            <button class="tab" data-tab="mac">Mac</button>
+            <button class="tab" data-tab="vps">VPS</button>
+        </div>
+        <div class="tab-content active" id="general">
+            <div class="command">
+                <pre>q</pre>
+                <div class="explanation">Exit/quit command output view (e.g., systemctl status, less, more)</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>clear</pre>
+                <div class="explanation">Clear the terminal screen</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>pwd</pre>
+                <div class="explanation">Print working directory - show current location</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>history</pre>
+                <div class="explanation">Show command history</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>!!</pre>
+                <div class="explanation">Run the last command again</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>Ctrl + C</pre>
+                <div class="explanation">Interrupt/stop current command</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>Ctrl + L</pre>
+                <div class="explanation">Clear screen (alternative to 'clear' command)</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </div>
+        <div class="tab-content" id="github">
+            <div class="command">
+                <pre>git init</pre>
+                <div class="explanation">Initialize a new Git repository in the current directory</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>git add .</pre>
+                <div class="explanation">Stage all changes in the current directory for commit</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>git commit -m "Your message"</pre>
+                <div class="explanation">Create a new commit with the staged changes and a descriptive message</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>git remote add origin repository-url</pre>
+                <div class="explanation">Link your local repository to a remote GitHub repository</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>git push -u origin main</pre>
+                <div class="explanation">Push your commits to the remote repository and set up tracking</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </div>
+        <div class="tab-content" id="windows">
+            <div class="command">
+                <pre>cd directory_path</pre>
+                <div class="explanation">Change the current directory to the specified path</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>dir</pre>
+                <div class="explanation">List all files and directories in the current directory</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>mkdir folder_name</pre>
+                <div class="explanation">Create a new directory with the specified name</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>type file.txt</pre>
+                <div class="explanation">Display the contents of a text file</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>del file.txt</pre>
+                <div class="explanation">Delete a file</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </div>
+        <div class="tab-content" id="mac">
+            <div class="command">
+                <pre>cd directory_path</pre>
+                <div class="explanation">Change the current directory to the specified path</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>ls</pre>
+                <div class="explanation">List all files and directories in the current directory</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>mkdir folder_name</pre>
+                <div class="explanation">Create a new directory with the specified name</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>cat file.txt</pre>
+                <div class="explanation">Display the contents of a text file</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>rm file.txt</pre>
+                <div class="explanation">Delete a file</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </div>
+        <div class="tab-content" id="vps">
+            <div class="command">
+                <pre>ssh root@145.223.99.106</pre>
+                <div class="explanation">Connect to your VPS using SSH</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>sudo apt update && sudo apt upgrade</pre>
+                <div class="explanation">Update system packages on Ubuntu/Debian</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>sudo systemctl status service_name</pre>
+                <div class="explanation">Check the status of a system service</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>sudo nano /path/to/file</pre>
+                <div class="explanation">Edit a file using nano text editor</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>sudo ufw status</pre>
+                <div class="explanation">Check firewall status on Ubuntu</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>htop</pre>
+                <div class="explanation">Monitor system resources in real-time</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <div class="command">
+                <pre>sudo reboot</pre>
+                <div class="explanation">Reboot the server</div>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Made by Claude 3.7-Sonnet in Cursor.
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Copy button functionality
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        copyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const command = button.previousElementSibling.previousElementSibling.textContent;
+                navigator.clipboard.writeText(command).then(() => {
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

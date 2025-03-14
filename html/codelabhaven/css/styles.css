@@ -1,0 +1,608 @@
+::selection {
+    background: #FFD6D6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #F4F4F4;
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+    overflow-y: hidden; /* Default to no scrolling unless content overflows */
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: fixed;
+    top: 0;
+    z-index: 100; /* Ensure header stays above cursor and all content */
+    box-sizing: border-box;
+}
+
+.header-title {
+    display: flex;
+    align-items: center; /* Center the logo vertically */
+}
+
+.header-logo {
+    height: 24px; /* Reduced 30% from 40px */
+    width: auto; /* Maintain aspect ratio */
+    vertical-align: middle;
+}
+
+.header nav {
+    margin-left: auto;
+}
+
+.header nav a {
+    color: #000000;
+    font-size: 15pt;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+    position: relative;
+    text-transform: lowercase;
+}
+
+.header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0; /* Start underline from the left of "projects" text */
+    right: calc(100% - 60px); /* Adjust right to exclude superscript width (approx. 60px for "projects" text at 15pt) */
+    background: #000000;
+    transition: all 0.5s ease;
+}
+
+.header nav a:hover::after,
+.header nav a.active::after {
+    width: 100%; /* Underline only the "projects" text, not the superscript */
+}
+
+.header nav a sup {
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt; /* Smaller size for superscript number */
+    font-weight: bold;
+    color: #000000; /* Maintain black color for consistency with links */
+    vertical-align: super; /* Position as superscript */
+    line-height: 1; /* Ensure vertical alignment */
+    margin-left: 2px; /* Small spacing between "projects" and superscript */
+}
+
+.main {
+    flex: 1;
+    width: 100%;
+    background: #eeeeee;
+    padding: 80px 5% 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.home-content .title,
+.home-content .project-titles {
+    z-index: 2; /* Higher than cursor to ensure text is on top */
+}
+
+.cursor-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Low z-index to keep cursor layer behind text */
+}
+
+.cursor {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: #FFE4E4;
+    border-radius: 50%;
+    filter: blur(100px); /* Creates the shadow effect */
+    pointer-events: none;
+    z-index: 1; /* Higher than wrapper but lower than text */
+}
+
+.title {
+    font-size: clamp(6.4vw, 80pt, 12vw); /* Reduced 20% from 8vw, 100pt, 15vw */
+    font-weight: bold;
+    line-height: 1; /* Increased from 0.8 to 1 for more spacing */
+    color: #000000;
+    text-align: left;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+    cursor: default;
+    z-index: 1; /* Default for other pages, overridden by .home-content */
+}
+
+.title span {
+    color: #F4F4F4;
+}
+
+.title .regular {
+    font-weight: normal;
+}
+
+.title .black {
+    color: #000000;
+}
+
+.title .pixel-human {
+    font-family: 'Pixelify Sans', sans-serif; /* Pixelify Sans font */
+    color: #FFCCCC; /* New color for "human" */
+}
+
+.title .dot {
+    font-weight: bold;
+    color: #FFD6D6;
+}
+
+.project-titles {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    text-align: right;
+    z-index: 1; /* Default for other pages, overridden by .home-content */
+}
+
+.project-title {
+    font-size: 30pt;
+    font-weight: bold;
+    line-height: 50pt;
+    color: #000000;
+    text-transform: lowercase;
+}
+
+.project-title a {
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.project-title a::before {
+    content: '.'; /* Add black dot before the title */
+    margin-right: 10px; /* Add spacing between the dot and title */
+    color: #000000; /* Black color to match link text */
+}
+
+.project-title a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -4px;
+    left: 0; /* Align underline to the left */
+    background: #000000;
+    transition: all 0.5s ease;
+}
+
+.project-title a:hover::after {
+    width: 100%;
+}
+
+.project-title a:hover {
+    cursor: pointer;
+}
+
+.footer {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: fixed;
+    bottom: 0;
+    z-index: 100; /* Ensure footer stays above cursor and all content */
+    box-sizing: border-box;
+}
+
+.footer-text {
+    font-size: 14px; /* Reverted to match index.php */
+    color: #000000;
+    text-transform: lowercase;
+}
+
+.footer-text .dot {
+    color: #FFD6D6;
+}
+
+.footer-text a {
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.footer-text a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background: #000000;
+    transition: all 0.5s ease;
+    transform: translateX(-50%);
+}
+
+.footer-text a:hover::after {
+    width: 100%;
+}
+
+.footer-right {
+    font-size: 14px; /* Reverted to match index.php */
+    color: #FFD6D6;
+    margin-left: auto;
+}
+
+.about-page {
+    font-size: 18px;
+    color: #000000;
+    line-height: 1.5;
+    max-width: 90vw; /* Relative sizing for about page */
+    margin: 0 auto;
+    position: relative;
+    z-index: 3; /* Increased to ensure text is above cursor on about page */
+    min-height: 100vh; /* Ensure content fits viewport, allowing scroll if needed */
+    display: flex; /* Use flex to center content vertically */
+    flex-direction: column;
+    justify-content: flex-start; /* Move content higher, but still center horizontally */
+    align-items: center; /* Center content horizontally */
+    padding-top: 40px; /* Reduce padding from top to move content higher */
+}
+
+.about-page .main-title {
+    font-size: clamp(5vw, 60pt, 10vw); /* Relative to screen size: min 5vw, default 60pt, max 10vw */
+    font-weight: bold;
+    color: #000000;
+    text-transform: lowercase;
+    text-align: center; /* Keep title centered */
+    margin: 20px 0 60px; /* Increase bottom margin for more spacing under title, reduce top for higher positioning */
+    padding: 0; /* Remove default padding */
+}
+
+.about-content {
+    width: 90vw; /* Match max-width for consistency */
+    max-width: 800px; /* Cap width for readability */
+    text-align: left; /* Center the container but align text left */
+}
+
+.about-text {
+    margin-top: 0; /* Remove top margin to align with title */
+}
+
+.about-text p {
+    margin-top: 0; /* Remove top margin to align with title */
+    margin-bottom: 20px; /* Maintain bottom margin for spacing between paragraphs */
+    margin-left: 0; /* Remove left margin for left alignment */
+    margin-right: 0; /* Remove right margin for left alignment */
+}
+
+.projects-page {
+    font-size: 18px;
+    color: #000000;
+    line-height: 1.5;
+    max-width: 90vw; /* Relative sizing instead of fixed pixels */
+    margin: 0 auto; /* Center the container horizontally */
+    position: relative;
+    z-index: 3; /* Increased to ensure text is above cursor on projects list */
+    min-height: 100vh; /* Ensure content fits viewport, allowing scroll if needed */
+    display: flex; /* Use flex to center content vertically */
+    flex-direction: column;
+    justify-content: flex-start; /* Copied from about-page to move content higher */
+    align-items: center; /* Center content horizontally */
+    padding-top: 40px; /* Copied from about-page to match spacing above title */
+}
+
+.projects-page .main-title {
+    font-size: clamp(5vw, 60pt, 10vw); /* Relative to screen size, matches about-page */
+    font-weight: bold;
+    line-height: 1.2; /* Adjusted for larger screens */
+    color: #000000;
+    text-align: center; /* Centered horizontally */
+    text-transform: lowercase;
+    margin: 20px 0 60px; /* Copied from about-page for identical title positioning */
+    padding: 0; /* Remove default padding */
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center project titles horizontally */
+    justify-content: center; /* Center project titles vertically */
+    width: 100%; /* Full width of container */
+    max-width: 800px; /* Cap width for readability */
+    margin: 0 auto; /* Ensure perfect horizontal centering */
+    padding: 0; /* Remove padding to tighten spacing */
+}
+
+.project-title-link {
+    font-size: 24pt; /* Larger title for consistency */
+    font-weight: bold;
+    color: #000000;
+    text-transform: lowercase;
+    text-align: left; /* Left-align the text within each title, but center the list */
+    margin-bottom: 30px; /* Increased spacing between project titles for visual appeal */
+}
+
+.project-title-link a {
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.project-title-link a::before {
+    content: '.'; /* Add single black dot before the title */
+    margin-right: 10px; /* Add spacing between the dot and title */
+    color: #000000; /* Black color to match link text */
+}
+
+.project-title-link a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -4px;
+    left: 0; /* Align underline to the left */
+    background: #000000;
+    transition: all 0.5s ease;
+}
+
+.project-title-link a:hover::after {
+    width: 100%;
+}
+
+.project-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 5% 20px;
+    z-index: 3; /* Ensure text/images are above cursor on project subpage */
+}
+
+.project-header-screenshot {
+    width: 100%;
+    max-width: 90vw; /* Relative sizing for project detail */
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-detail-title {
+    font-size: 72pt; /* Increased by 50% from 48pt */
+    font-weight: bold;
+    line-height: 72pt;
+    color: #000000;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.project-detail-description {
+    font-size: 18px;
+    color: #333333;
+    line-height: 1.6;
+    max-width: 90vw; /* Relative sizing for project detail */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    z-index: 3; /* Ensure buttons are above cursor */
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+.back-btn {
+    background: #6c757d;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background: #5a6268;
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 24px;
+    }
+    .header nav a {
+        font-size: 13pt;
+        margin-left: 10px;
+    }
+    .header nav a sup {
+        font-size: 8pt; /* Reduce superscript size for tablet */
+        margin-left: 1px; /* Reduce spacing for tablet */
+    }
+    .header nav a::after {
+        right: calc(100% - 52px); /* Adjust right for tablet font size (approx. 52px for "projects" text at 13pt) */
+    }
+    .title {
+        font-size: clamp(4.8vw, 64pt, 9.6vw); /* Reduced 20% from 6vw, 90pt, 12vw for mobile */
+        line-height: 1; /* Increased from 0.8 to 1 */
+    }
+    .project-titles {
+        position: absolute;
+        top: calc(50% + 180pt);
+        left: 5%;
+        right: auto;
+        transform: none;
+        text-align: left;
+    }
+    .project-title {
+        font-size: 18pt; /* Adjusted for mobile */
+        line-height: 30pt;
+    }
+    .project-title a::before {
+        margin-right: 8px; /* Reduce spacing for tablet */
+    }
+    .cursor {
+        width: 200px;
+        height: 200px;
+    }
+    .about-page {
+        padding-top: 20px; /* Further reduce padding for mobile */
+    }
+    .about-page .main-title {
+        font-size: clamp(4vw, 45pt, 8vw); /* Adjusted for mobile, relative to screen size */
+        margin: 15px 0 40px; /* Adjust margins for mobile, increase bottom spacing */
+    }
+    .about-content {
+        width: 90vw; /* Maintain relative sizing for mobile */
+        max-width: 600px; /* Reduced cap for readability on smaller screens */
+        padding: 5px 0; /* Reduce padding for mobile */
+    }
+    .about-text p {
+        margin-bottom: 15px; /* Reduced bottom margin for mobile */
+    }
+    .projects-page {
+        padding-top: 20px; /* Match about-page reduced padding for tablet */
+    }
+    .projects-page .main-title {
+        font-size: clamp(4vw, 45pt, 8vw); /* Adjusted for mobile, relative to screen size */
+        margin: 15px 0 40px; /* Match about-page margins for tablet */
+    }
+    .projects-list {
+        width: 100%;
+        max-width: 600px; /* Reduced cap for readability on smaller screens */
+        padding: 0; /* Maintain no padding for tablet */
+    }
+    .project-title-link {
+        font-size: 18pt; /* Adjusted for mobile */
+        margin-bottom: 20px; /* Reduced spacing for mobile */
+    }
+    .project-title-link a::before {
+        margin-right: 6px; /* Further reduce spacing for mobile */
+    }
+    .project-detail-title {
+        font-size: 54pt; /* Adjusted for mobile, 75% of 72pt */
+    }
+    .project-header-screenshot {
+        max-width: 90vw; /* Maintain relative sizing for mobile */
+    }
+    .project-detail-description {
+        max-width: 90vw; /* Maintain relative sizing for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 5%;
+    }
+    .header-title {
+        font-size: 20px;
+    }
+    .header nav {
+        margin-left: 0;
+        margin-top: 10px;
+        flex-direction: row; /* Keep links in a row on mobile */
+        justify-content: flex-end; /* Align to the right on mobile */
+    }
+    .header nav a {
+        font-size: 11pt;
+        margin-left: 8px;
+    }
+    .header nav a sup {
+        font-size: 6pt; /* Further reduce superscript size for mobile */
+        margin-left: 1px; /* Further reduce spacing for mobile */
+    }
+    .header nav a::after {
+        right: calc(100% - 44px); /* Adjust right for mobile font size (approx. 44px for "projects" text at 11pt) */
+    }
+    .title {
+        font-size: clamp(3.2vw, 48pt, 6.4vw); /* Reduced 20% from 4vw, 60pt, 8vw for mobile */
+        line-height: 1; /* Increased from 0.8 to 1 */
+    }
+    .project-titles {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .project-title {
+        font-size: 14pt; /* Adjusted for mobile */
+        line-height: 24pt;
+    }
+    .project-title a::before {
+        margin-right: 4px; /* Further reduce spacing for mobile */
+    }
+    .cursor {
+        width: 150px;
+        height: 150px;
+    }
+    .about-page {
+        padding-top: 10px; /* Further reduce padding for mobile */
+    }
+    .about-page .main-title {
+        font-size: clamp(3vw, 30pt, 6vw); /* Adjusted for mobile, relative to screen size */
+        margin: 10px 0 30px; /* Further reduce margins, increase bottom spacing for mobile */
+    }
+    .about-content {
+        width: 90vw; /* Maintain relative sizing for mobile */
+        max-width: 400px; /* Further reduced cap for readability on smallest screens */
+        padding: 0; /* Remove padding for mobile */
+    }
+    .about-text p {
+        margin-bottom: 10px; /* Further reduced bottom margin for mobile */
+    }
+    .projects-page {
+        padding-top: 10px; /* Match about-page reduced padding for mobile */
+    }
+    .projects-page .main-title {
+        font-size: clamp(3vw, 30pt, 6vw); /* Adjusted for mobile, relative to screen size */
+        margin: 10px 0 30px; /* Match about-page margins for mobile */
+    }
+    .projects-list {
+        width: 100%;
+        max-width: 400px; /* Further reduced cap for readability on smallest screens */
+        padding: 0; /* Maintain no padding for mobile */
+    }
+    .project-title-link {
+        font-size: 14pt; /* Adjusted for mobile */
+        margin-bottom: 15px; /* Further reduced spacing for mobile */
+    }
+    .project-title-link a::before {
+        margin-right: 4px; /* Maintain spacing for mobile */
+    }
+    .project-detail-title {
+        font-size: 36pt; /* Adjusted for mobile, 50% of 72pt */
+    }
+    .project-header-screenshot {
+        max-width: 90vw; /* Maintain relative sizing for mobile */
+    }
+    .project-detail-description {
+        max-width: 90vw; /* Maintain relative sizing for mobile */
+    }
+}

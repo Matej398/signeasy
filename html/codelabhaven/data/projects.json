@@ -1,0 +1,20 @@
+[
+    {
+        "title": "SignEasy",
+        "description": "A sleek, user-friendly tool to sign PDFs digitally with ease. Upload your document, sketch your signature, and download—secure and fast, all in your browser. Made with Grok 3.",
+        "link": "signeasy",
+        "screenshot": "screenshots/test1.png"
+    },
+    {
+        "title": "Nyan_v1",
+        "description": "A sleek, user-friendly tool to sign PDFs digitally with ease. Upload your document, sketch your signature, and download—secure and fast, all in your browser. Made with Grok 3.",
+        "link": "projects/nyan",
+        "screenshot": "screenshots/test1.png"
+    },
+    {
+        "title": "Terminal Cheatsheet",
+        "description": "A comprehensive collection of terminal commands for GitHub, Windows, Mac, and VPS. Easy to copy commands with explanations. Made with Grok 3.",
+        "link": "projects/terminal-cheatsheet",
+        "screenshot": "screenshots/test1.png"
+    }
+]
